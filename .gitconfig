@@ -13,6 +13,10 @@
 	c = commit
 	cm = "commit -m"
 	cam = "commit --amend -m "
+	d = diff
+	ds = diff --stat
+	dcs = diff --cached --stat
+	dc = diff --cached
 [color]
 	ui = auto
 
