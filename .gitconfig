@@ -1,12 +1,12 @@
 [user]
 	name = Matej 'Yin' Gagyi
-	email = yinotaurus@gmail.comss
+	email = yinotaurus@gmail.com
 [push]
 	default = upstream
 [branch]
 	autosetuprebase = always
 [alias]
-	l1 = log
+	l1 = "log --oneline"
 	s = "status -s"
 	a = add
 	au = "add -u"
