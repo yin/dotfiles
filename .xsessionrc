@@ -1,0 +1,8 @@
+#!/bin/bash
+
+date > ~/aaa_remove
+
+for i in ~/.etc/xsession/*; do
+	source $i
+done
+
