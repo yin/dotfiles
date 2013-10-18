@@ -112,3 +112,15 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
+
+for i in $(run-parts --list ~/.etc/bashrc/); do
+	if [ -r "$i" ]; then
+		echo . "$i"
+		. "$i"
+	fi
+done
+
+#TODO:Make sure setup.sh#heroku can't add lines to my files.
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
+
