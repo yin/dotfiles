@@ -1,0 +1,1 @@
+export PATH=.apps/android/android-sdk-linux/tools/:$PATH
