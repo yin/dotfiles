@@ -1,5 +1,8 @@
 #!/bin/bash
 
+date
+echo xkbset m 
 xkbset m
-xmodmap ~/.xmodmap
+echo xmodmap ~/.xmodmap 
+xmodmap ~/.Xmodmap
 

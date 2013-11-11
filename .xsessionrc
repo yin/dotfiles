@@ -1,8 +1,7 @@
 #!/bin/bash
 
-date > ~/aaa_remove
-
 for i in ~/.etc/xsession/*; do
-	source $i
+	. $i
 done
-
+env >> .var/log/xsessionrc-$(date +%y%m%d-%H%M%S%N).log 
+xclock &
