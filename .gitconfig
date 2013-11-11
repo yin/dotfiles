@@ -6,17 +6,50 @@
 [branch]
 	autosetuprebase = always
 [alias]
-	l1 = "log --oneline"
-	s = "status -s"
 	a = add
+	aA = add -A
+	ae = add -e
 	au = "add -u"
+	aue = add -ue
+	b = branch
+	b- = rev-parse --abbrev-ref HEAD
+	bD = branch -D
+	bM = branch -M
+	ba = branch -a
+	br = branch -r
 	c = commit
+	c-a = commit --amend
+	ca = commit -a
+	ca-a = commit --amend -a
+	cam = commit -am
+	cam-a = commit --amend -am
 	cm = "commit -m"
-	cam = "commit --amend -m "
+	cm-a = commit --amend -m
+	co = checkout
+	cob = checkout -b
+	g = checkout
+	gb = checkout -b
+	gm = checkout -m
 	d = diff
-	ds = diff --stat
-	dcs = diff --cached --stat
 	dc = diff --cached
+	dcs = diff --cached --stat
+	ds = diff --stat
+	l1 = "log --oneline"
+	l1d = log --oneline --decorate
+	l1dg = log --oneline --decorate --graph
+	la1 = log --all --oneline
+	la1d = log --all --oneline --decorate
+	la1dg = log --all --oneline --decorate --graph
+	m = merge
+	m- = "!git_merge_into() { b=`git rev-parse --abbrev-ref HEAD`; git checkout $1 && git merge $b && echo merged and now on branch $1 || echo 'Merge-into failed.' >&2; }; git_merge_into"
+	r = rebase
+	m- = "!git_rebase_into() { b=`git rev-parse --abbrev-ref HEAD`; git checkout $1 && git rebase $b && git checkout $b && echo merged and now on branch $1 || echo 'rebase-into failed' >&2; }; git_rebase_into"
+	ra = rebase --abort
+	rc = rebase --continue
+	ri = rebase --interactive --autosquash
+	rl = reflog
+	s = status
+	ss = status -s
 [color]
 	ui = auto
 
