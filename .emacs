@@ -30,6 +30,7 @@
     paredit
     undo-tree
     multiple-cursors     ; Multiple cursor for editting at many places at once
+    helm                 ; Incremental completion and narrowing framework / based on anything.el
 )
   "List of packages needs to be installed at launch")
 
@@ -58,20 +59,21 @@
     (when (not (package-installed-p p))
       (package-install p))))
 
-;; Global modes
+;; == Global modes
 
-(global-linum-mode t)
+(global-linum-mode t)                 ; Show line numbers
 
-(after 'undo-tree-autoloads
+(after 'undo-tree-autoloads           ; Undo-tree
   (global-undo-tree-mode t)
   (setq undo-tree-visualizer-relative-timestamps t)
   (setq undo-tree-visualizer-timestamps t))
 
-;; Bindings
+(require 'helm-config)                ; Helm completions
+
+;; == Bindings
 (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
 
-;; Legacy code - hate commented out code
-
+;; == Legacy code - hate commented out code
 
 ;; Add packages in ~/.emacs.d/
 ;;(add-to-list load-path "~/.emacs.d")
