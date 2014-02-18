@@ -4,4 +4,8 @@ for i in ~/.etc/xsession/*; do
 	. $i
 done
 env >> .var/log/xsessionrc-$(date +%y%m%d-%H%M%S%N).log 
-xclock &
+
+
+synclient HorizTwoFingerScroll=1
+synclient TapButton3=2
+
