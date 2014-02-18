@@ -1,0 +1,47 @@
+[user]
+	name = Matej 'Yin' Gagyi
+	email = yinotaurus@gmail.com
+[push]
+	default = upstream
+[branch]
+	autosetuprebase = always
+[alias]
+	a = add
+	aA = add -A
+	ae = add -e
+	au = "add -u"
+	aue = add -ue
+	b = branch
+	b- = rev-parse --abbrev-ref HEAD
+	bD = branch -D
+	bM = branch -M
+	ba = branch -a
+	br = branch -r
+	c = commit
+	c-a = commit --amend
+	ca = commit -a
+	ca-a = commit --amend -a
+	cam = commit -am
+	cam-a = commit --amend -am
+	cm = "commit -m"
+	cm-a = commit --amend -m
+	co = checkout
+	cob = checkout -b
+	d = diff
+	dc = diff --cached
+	dcs = diff --cached --stat
+	ds = diff --stat
+	l1 = "log --oneline"
+	l1d = log --oneline --decorate
+	l1dg = log --oneline --decorate --graph
+	la1 = log --oneline
+	la1d = log --oneline --decorate
+	la1dg = log --oneline --decorate --graph
+	m- = "!git_merge_into() { b=master; git checkout  && echo git merge  && echo git ch:eckout -; }; git-merge-into"
+	r = rebase
+	ri = rebase --interactive --autosquash
+	s = status
+	ss = status -s
+[color]
+	ui = auto
+
