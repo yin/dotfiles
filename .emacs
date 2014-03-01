@@ -27,11 +27,12 @@
 ;; No splash screen please... jeez
 (setq inhibit-startup-screen t)
 
+;; TODO(yin): Move to reference material
 ;; Set proxy. If required by server, it asks for auth.
-(setq url-proxy-services
-   '(("no_proxy" . "^\\(localhost\\|10.*\\)")
-     ("http" . "proxy.rwe.com:8080")
-     ("https" . "proxy.rwe.com:8080")))
+;;(setq url-proxy-services
+;;   '(("no_proxy" . "^\\(localhost\\|10.*\\)")
+;;     ("http" . "proxy.rwe.com:8080")
+;;     ("https" . "proxy.rwe.com:8080")))
 
 ;; Indent by spaces
 (setq-default indent-tabs-mode nil)
