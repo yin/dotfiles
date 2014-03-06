@@ -37,6 +37,14 @@
 ;; Indent by spaces
 (setq-default indent-tabs-mode nil)
 
+;; Relocate backup files (*~)
+;; http://www.skrakes.com/2009/03/18/relocate-emacs-backup-files-tilde
+;; = Stagging
+(defvar backup-dir "~/.emacs_backups/")
+
+(defun make-backup-file-name (file)
+  (concat backup-dir (file-name-nondirectory file) "~") )
+
 ;; Melpa Packages
 (require 'package)
 (setq package-user-dir "~/.emacs.d/elpa/")
@@ -58,6 +66,7 @@
     undo-tree
     multiple-cursors     ; Multiple cursor for editting at many places at once
     helm                 ; Incremental completion and narrowing framework / based on anything.el
+    lua-mode             ; Awesome WM
 )
   "List of packages needs to be installed at launch")
 
