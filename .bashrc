@@ -123,4 +123,5 @@ done
 #TODO:Make sure setup.sh#heroku can't add lines to my files.
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
-
+export EDITOR="emacsclient"
+export ALTERNATE_EDITOR=""
