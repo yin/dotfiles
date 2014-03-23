@@ -30,19 +30,22 @@ do
         naughty.notify({ preset = naughty.config.presets.critical,
                          title = "Oops, an error happened!",
                          text = err })
-        in_error = false
+        in_error = false 
     end)
 end
 -- }}}
 
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/usr/share/awesome/themes/default/theme.lua")
+-- NOTE(yin): hopefuly ~ works.
+-- TODO(yin): do not use
+naughty.notify({title = "testing", text = "naughty", timeout = 20})
+beautiful.init("/home/yin/.config/awesome/theme.lua")
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "editor"
-editor_cmd = terminal .. " -e " .. emacs
+editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -169,7 +172,7 @@ for s = 1, screen.count() do
                                           end, mytasklist.buttons)
 
     -- Create the wibox
-    mywibox[s] = awful.wibox({ position = "top", screen = s })
+    mywibox[s] = awful.wibox({ position = "top", height = "32", screen = s })
     -- Add widgets to the wibox - order matters
     mywibox[s].widgets = {
         {
