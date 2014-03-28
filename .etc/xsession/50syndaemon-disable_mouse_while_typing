@@ -1,0 +1,6 @@
+#!/bin/bash
+
+# TODO(yin): Move to session files
+# Disable mouse clicks while typing on keyboard, delay: 1.5sec
+syndaemon -i 1.5 -d -t
+
