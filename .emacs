@@ -62,6 +62,7 @@
     browse-kill-ring
     ido-ubiquitous
     magit
+    markdown-mode
     paredit
     undo-tree
     multiple-cursors     ; Multiple cursor for editting at many places at once
@@ -74,7 +75,6 @@
   '(clojure-mode
     php-mode
     rvm             ; Ruby Version Manager
-    markdown-mode
     yasnippet       ; Autoreplace sippets, screencast: http://www.youtube.com/watch?v=ZCGmZK4V7Sg
     protobuf-mode)
   "Packages I want to look into"
@@ -107,7 +107,8 @@
 (require 'helm-config)                ; Helm completions
 
 ;; == Bindings
-(global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)
+(global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)  ; multiple-cursors: Add cursor at Ctrl+Shift+MouseLeft
+(global-set-key "\C-l" 'goto-line)                              ; Goto-line short-cut key
 
 ;; == Legacy code - hate commented out code
 
