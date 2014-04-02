@@ -51,5 +51,5 @@
 	s = status
 	ss = status -s
 [color]
-	ui = auto
+	ui = true
 
