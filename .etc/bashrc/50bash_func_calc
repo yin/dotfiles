@@ -1,0 +1,38 @@
+#!/bin/bash
+
+# from http://brettterpstra.com/2011/02/02/quick-calculations-in-bash/
+function calc() {
+  equat=$(echo ${@//[^0-9\.\+\/\*\(\)]/ }| sed 's/[ \t]*//g')
+  echo $equat|bc -lq
+}
+
+## just for fun, ccalc trims the newline 
+## and copies the result directly to the clipboard
+function ccalc () {
+  calc $@|tr -d '\n'|pbcopy
+}
+
+function calcf() {
+  bc -l << EOF
+scale=4
+$@
+quit
+EOF
+}
+
+function calc_sum() {
+  if [[ $# == 0 ]]; then
+    echo "Enter numbers, press = for sum:"
+    read -d "="
+    input=$REPLY
+    echo "================"
+  else
+    input="$@"
+  fi
+  sum=0
+  for i in $input; do 
+    sum=$sum+$i
+  done
+  echo $sum|bc -l
+}
+
