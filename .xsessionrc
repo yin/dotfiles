@@ -8,7 +8,7 @@ for i in $(find ~/.etc/xsession/ -maxdepth 1 -type f); do
 done
 env >> .var/log/xsessionrc-$(date +%y%m%d-%H%M%S%N).log 
 
-
+# TODO(yin): Move to Xorg input device config to keep settings after resuming from sleep
 synclient HorizTwoFingerScroll=1
 synclient TapButton3=2
 
