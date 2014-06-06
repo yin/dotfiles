@@ -67,7 +67,8 @@
     undo-tree
     multiple-cursors     ; Multiple cursor for editting at many places at once
     helm                 ; Incremental completion and narrowing framework / based on anything.el
-    lua-mode             ; Awesome WM
+    lua-mode             ; Awesome WM [TODO] remove
+    dart-mode
 )
   "List of packages needs to be installed at launch")
 
