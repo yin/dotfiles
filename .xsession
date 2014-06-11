@@ -8,6 +8,8 @@ gnome-sound-applet &
 gnome-settings-daemon &
 # Dropbox sync
 dropbox start -i &
+# Make touchpad clicks ignored while typing
+syndaemon &
 
 # This is run, when gnome-session, or something is used
 . ~/.xsessionrc
