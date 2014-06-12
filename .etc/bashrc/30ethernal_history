@@ -28,7 +28,9 @@
 # have a fix for that which doesn't slow the command down, please submit
 # a patch or pull request.
 export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo -e $$\\t$USER\\t$HOSTNAME\\tscreen $WINDOW\\t`date +%D%t%T%t%Y%t%s`\\t$PWD"$(history 1)" >> ~/.bash_eternal_history'
+export PROMPT_COMMAND="$(PROMPT_COMMAND); history -a; history -c; history -r"
 
 shopt -s histappend
-export HISTFILESIZE=4000
+export HISTFILESIZE=16374
+export HISTSIZE=2048
 
