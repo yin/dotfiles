@@ -9,7 +9,7 @@ gnome-settings-daemon &
 # Dropbox sync
 dropbox start -i &
 # Make touchpad clicks ignored while typing
-syndaemon &
+syndaemon -d -i 0.75 -t -K -R
 
 # This is run, when gnome-session, or something is used
 . ~/.xsessionrc
