@@ -2,6 +2,9 @@
 
 shopt -s checkwinsize
 
+# == Custom scripts
+export PATH=~/.bin:$PATH
+
 # == Safety
 alias rm="rm -i"
 alias mv="mv -i"
