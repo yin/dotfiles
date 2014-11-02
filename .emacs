@@ -1,31 +1,15 @@
 ;; == Staggng
 
-;; Rename file in curent buffer
-;; http://tuxicity.se/emacs/elisp/2010/03/26/rename-file-and-buffer-in-emacs.html
-(defun rename-this-buffer-and-file ()
-  "Renames current buffer and file it is visiting."
-  (interactive)
-  (let ((name (buffer-name))
-        (filename (buffer-file-name)))
-    (if (not (and filename (file-exists-p filename)))
-        (error "Buffer '%s' is not visiting a file!" name)
-      (let ((new-name (read-file-name "New name: " filename)))
-        (cond ((get-buffer new-name)
-               (error "A buffer named '%s' already exists!" new-name))
-              (t
-               (rename-file filename new-name 1)
-               (rename-buffer new-name)
-               (set-visited-file-name new-name)
-               (set-buffer-modified-p nil)
-               (message "File '%s' successfully renamed to '%s'" name (file-name-nondirectory new-name))))))))
-
-;; C-c r renames file in current buffer
-(global-set-key (kbd "C-c r") 'rename-this-buffer-and-file)
-
+;; After macro
+(defmacro after (mode &rest body)
+  "`eval-after-load' MODE evaluate BODY."
+  (declare (indent defun))
+  `(eval-after-load ,mode
+     '(progn ,@body)))
 
 ;; == Stable
 ;; No splash screen please... jeez
-(setq inhibit-startup-screen t)
+(setq inhibit-startup-message t)
 
 ;; TODO(yin): Move to reference material
 ;; Set proxy. If required by server, it asks for auth.
@@ -107,7 +91,31 @@
 
 (require 'helm-config)                ; Helm completions
 
+;; defuns and their bindings
+;; Rename file in curent buffer
+;; http://tuxicity.se/emacs/elisp/2010/03/26/rename-file-and-buffer-in-emacs.html
+(defun rename-this-buffer-and-file ()
+  "Renames current buffer and file it is visiting."
+  (interactive)
+  (let ((name (buffer-name))
+        (filename (buffer-file-name)))
+    (if (not (and filename (file-exists-p filename)))
+        (error "Buffer '%s' is not visiting a file!" name)
+      (let ((new-name (read-file-name "New name: " filename)))
+        (cond ((get-buffer new-name)
+               (error "A buffer named '%s' already exists!" new-name))
+              (t
+               (rename-file filename new-name 1)
+               (rename-buffer new-name)
+               (set-visited-file-name new-name)
+               (set-buffer-modified-p nil)
+               (message "File '%s' successfully renamed to '%s'" name (file-name-nondirectory new-name))))))))
+
 ;; == Bindings
+
+;; C-c r renames file in current buffer
+(global-set-key (kbd "C-c r") 'rename-this-buffer-and-file)
+
 (global-set-key (kbd "C-S-<mouse-1>") 'mc/add-cursor-on-click)  ; multiple-cursors: Add cursor at Ctrl+Shift+MouseLeft
 (global-set-key "\C-l" 'goto-line)                              ; Goto-line short-cut key
 
