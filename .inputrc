@@ -5,3 +5,5 @@ C-]:'\C-e\C-ucat <<EOF | tr -d "\\n" | xsel -ib\n\C-y\nEOF\n'
 "\e[5D": backward-word
 "\e\e[C": forward-word
 "\e\e[D": backward-word
+"\e[3;5~": backward-kill-word
+# TODO C-backspace : kill-word
