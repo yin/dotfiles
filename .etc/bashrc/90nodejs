@@ -2,6 +2,7 @@
 
 # == node.js and nvm
 # http://nodejs.org/api/repl.html#repl_repl
+# 
 alias node="env NODE_NO_READLINE=1 rlwrap node"
 alias node_repl="node -e \"require('repl').start({ignoreUndefined: true})\""
 export NODE_DISABLE_COLORS=1

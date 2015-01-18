@@ -1,7 +1,10 @@
 #!/bin/bash
 
-if [ -r ~/.bashrc ]; then
-	. ~/.bashrc
+echo ".bash_profile: starting login shell"
+
+rcfile=~/.bashrc
+if [ -r $rcfile ]; then
+	. $rcfile
 fi
 
 export PATH=$HOME/bin:$PATH
