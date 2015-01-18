@@ -1,5 +1,6 @@
 #!/bin/bash
 
+help=$(cat <<EOF
 # Bash eternal history
 # --------------------
 # This snippet allows infinite recording of every command you've ever
@@ -27,7 +28,19 @@
 # define a bash function which escapes the string before writing it; if you
 # have a fix for that which doesn't slow the command down, please submit
 # a patch or pull request.
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'echo -e $$\\t$USER\\t$HOSTNAME\\tscreen $WINDOW\\t`date +%D%t%T%t%Y%t%s`\\t$PWD"$(history 1)" >> ~/.bash_eternal_history'
+EOF
+)
+
+eternal_echo() {
+    echo -e '$$\\t$USER\\t$HOSTNAME\\tscreen $WINDOW\\t`date +%D%t%T%t%Y%t%s`\\t$PWD"$(history 1)"'
+}
+eternal_save() {
+    eternal_echo >> ~/.bash_eternal_history
+}
+
+alias help_eternal='echo "$help"'
+
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ; }"'eternal_save'
 export PROMPT_COMMAND="${PROMPT_COMMAND}; history -a; history -c; history -r"
 
 shopt -s histappend

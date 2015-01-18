@@ -1,0 +1,5 @@
+#!/bin/bash
+
+# TODO(yin): Move to Xorg input device config to keep settings after resuming from sleep
+synclient HorizTwoFingerScroll=1
+synclient TapButton3=2

@@ -1,14 +1,10 @@
 #!/bin/bash
 
+log_file=.var/log/xsessionrc-$(date +%y%m%d-%H%M%S%N).log 
 for i in $(find ~/.etc/xsession/ -maxdepth 1 -type f); do
-	if [ -x $i ]; then
+	if [ -r $i ]; then
 	    echo load $i >&2
-	    . $i
+	    echo load $i >> $log_file
+	    . $i >> $log_file
 	fi
 done
-env >> .var/log/xsessionrc-$(date +%y%m%d-%H%M%S%N).log 
-
-# TODO(yin): Move to Xorg input device config to keep settings after resuming from sleep
-synclient HorizTwoFingerScroll=1
-synclient TapButton3=2
-

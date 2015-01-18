@@ -1,8 +1,3 @@
 #!/bin/bash
 
-# TODO
-sleep 1
-exec bash -c "xsetroot -solid '#101010'"
-
-# orig:
-#xsetroot -solid '#101010'"
+xsetroot -solid '#101010'

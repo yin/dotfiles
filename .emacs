@@ -9,17 +9,14 @@
 
 ;; == Stable
 ;; No splash screen please... jeez
-(setq inhibit-startup-message t)
+(setq inhibit-startup-message 't)
 
 ;; TODO(yin): Move to reference material
 ;; Set proxy. If required by server, it asks for auth.
 ;;(setq url-proxy-services
-;;   '(("no_proxy" . "^\\(localhost\\|10.*\\)")
-;;     ("http" . "proxy.rwe.com:8080")
-;;     ("https" . "proxy.rwe.com:8080")))
-
-;; Indent by spaces
-(setq-default indent-tabs-mode nil)
+;;   '(("no_proxy" . "^\\(localhost\\|192.168.*\\||10.*\\)")
+;;     ("http" . "proxy.com:8080")
+;;     ("https" . "proxy.com:8080")))
 
 ;; Relocate backup files (*~)
 ;; http://www.skrakes.com/2009/03/18/relocate-emacs-backup-files-tilde
@@ -27,7 +24,13 @@
 (defvar backup-dir "~/.emacs_backups/")
 
 (defun make-backup-file-name (file)
+  (if (not (file-directory-p backup-dir) )
+      (mkdir backup-dir 't) )
   (concat backup-dir (file-name-nondirectory file) "~") )
+
+;; Don't ask to open symbolic links to versioned files
+(require 'vc)
+(setq vc-follow-symlink 't)  
 
 ;; Melpa Packages
 (require 'package)
@@ -51,7 +54,6 @@
     undo-tree
     multiple-cursors     ; Multiple cursor for editting at many places at once
     helm                 ; Incremental completion and narrowing framework / based on anything.el
-    lua-mode             ; Awesome WM [TODO] remove
     dart-mode
 )
   "List of packages needs to be installed at launch")
@@ -91,6 +93,8 @@
 
 (require 'helm-config)                ; Helm completions
 
+;; == Custom defuns
+
 ;; defuns and their bindings
 ;; Rename file in curent buffer
 ;; http://tuxicity.se/emacs/elisp/2010/03/26/rename-file-and-buffer-in-emacs.html
@@ -110,6 +114,15 @@
                (set-visited-file-name new-name)
                (set-buffer-modified-p nil)
                (message "File '%s' successfully renamed to '%s'" name (file-name-nondirectory new-name))))))))
+
+
+;; ==== Indentation: 2 spaces for a tab
+(setq-default indent-tabs-mode nil)
+(custom-set-variables
+ '(tab-width 2)
+ '(js-indent-level 2))
+(custom-set-faces
+ )
 
 ;; == Bindings
 
@@ -139,4 +152,3 @@
 ;;            (unless (package-installed-p package)
 ;;              (package-install package)))
 ;;        ))
-
