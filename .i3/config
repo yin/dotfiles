@@ -19,12 +19,14 @@ bindsym $mod+Left         focus left
 bindsym $mod+Down         focus down
 bindsym $mod+Up           focus up
 bindsym $mod+Right        focus right
-bindsym $mod+space        focus mode_toggle    # tiling / floating windows
+# focus tiling / floating windows
+bindsym $alt+Tab          focus mode_toggle
 bindsym $mod+Shift+Left   move left
 bindsym $mod+Shift+Down   move down
 bindsym $mod+Shift+Up     move up
 bindsym $mod+Shift+Right  move right
 bindsym $mod+Shift+space  floating toggle
+bindsym $mod+Tab          floating toggle
 bindsym $mod+h            split h
 bindsym $mod+v            split v
 bindsym $mod+f            fullscreen
@@ -56,16 +58,24 @@ bindsym $mod+Shift+parenright   move container to workspace 10
 
 bindsym $mod+r                  mode "resize"
 mode "resize" {
+        bindsym Escape          mode "default"
+        bindsym Space           mode "default"
+        bindsym Backspace       mode "default"
+        bindsym q               mode "default"
+        bindsym c               mode "cmd"
+        bindsym Return          exec i3-sensible-terminal
         bindsym Left            resize shrink width 10 px or 10 ppt
         bindsym Down            resize grow height 10 px or 10 ppt
         bindsym Up              resize shrink height 10 px or 10 ppt
         bindsym Right           resize grow width 10 px or 10 ppt
         bindsym Control+Left    move left, resize grow width 10 px or 10 ppt
-        bindsym Control+Down    move down resize shrink height 10 px or 10 ppt
+        bindsym Control+Down    move down, resize shrink height 10 px or 10 ppt
         bindsym Control+Up      move up, resize grow height 10 px or 10 ppt
         bindsym Control+Right   move right, resize shrink width 10 px or 10 ppt
-        bindsym Return          mode "default"
-        bindsym Escape          mode "default"
+        bindsym $alt+Left       move left, resize grow width 20 px or 20 ppt
+        bindsym $alt+Right      move right, resize shrink width 20 px or 20 ppt
+        bindsym $alt+Down       move down, move right, resize shrink width 20 px or 20 ppt, resize shrink height 20 px or 20 ppt
+        bindsym $alt+Up         move up, move left, resize grow width 20 px or 20 ppt, resize grow height 20 px or 20 ppt
 }
 
 # Yin's mods
@@ -73,19 +83,28 @@ bindsym $mod+x move scratchpad
 bindsym $mod+c scratchpad show
 bindsym $alt+c mode "cmd"
 mode "cmd" {
-     bindsym q            mode "default"
+     bindsym Escape       mode "default"
      bindsym Space        mode "default"
+     bindsym Backspace    mode "default"
+     bindsym q            mode "default"
+     bindsym r            mode "resize"
+     bindsym Shift+C      reload
+     bindsym Return       exec i3-sensible-terminal
      bindsym c            scratchpad show
      bindsym Left         focus left
      bindsym Down         focus down
      bindsym Up           focus up
      bindsym Right        focus right
-     bindsym space        focus mode_toggle    # tiling / floating windows
+     bindsym Tab          focus mode_toggle    # tiling / floating windows
      bindsym Shift+Left   move left
      bindsym Shift+Down   move down
      bindsym Shift+Up     move up
      bindsym Shift+Right  move right
-     bindsym Shift+space  floating toggle
+     bindsym $alt+Left    move left, resize grow width 20 px or 20 ppt
+     bindsym $alt+Right   move right, resize shrink width 20 px or 20 ppt
+     bindsym $alt+Down    move down, move right, resize shrink width 20 px or 20 ppt, resize shrink height 20 px or 20 ppt
+     bindsym $alt+Up      move up, move left, resize grow width 20 px or 20 ppt, resize grow height 20 px or 20 ppt
+     bindsym Shift+Tab    floating toggle
      bindsym h            split h
      bindsym v            split v
      bindsym f            fullscreen
