@@ -11,6 +11,9 @@
 ;; No splash screen please... jeez
 (setq inhibit-startup-message 't)
 
+;; == Theme
+(load-theme 'tango-dark t)
+
 ;; TODO(yin): Move to reference material
 ;; Set proxy. If required by server, it asks for auth.
 ;;(setq url-proxy-services
@@ -54,8 +57,13 @@
     undo-tree
     multiple-cursors     ; Multiple cursor for editting at many places at once
     helm                 ; Incremental completion and narrowing framework / based on anything.el
-    dart-mode
-)
+    go-mode
+    go-play              ; Paste to play.golang.org
+    go-errcheck          ; errcheck integration for go-mode
+    go-direx             ; Tree style source code viewer for Go language
+    go-eldoc             ; eldoc for go-mod
+    go-autocomplete      ; auto-complete-mode backend for go-mode
+    )
   "List of packages needs to be installed at launch")
 
 (defvar suggested-packages
@@ -63,7 +71,8 @@
     php-mode
     rvm             ; Ruby Version Manager
     yasnippet       ; Autoreplace sippets, screencast: http://www.youtube.com/watch?v=ZCGmZK4V7Sg
-    protobuf-mode)
+    protobuf-mode
+    dart-mode)
   "Packages I want to look into"
   )
 
